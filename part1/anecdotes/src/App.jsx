@@ -34,7 +34,7 @@ const App = () => {
       <h1>Anecdote of the day</h1>
       <p>{anecdotes[selected]}</p>
       <p>has {votes[selected]} votes</p>
-      <button onClick={handleVote}>vote</button>
+      <button style={{marginRight: '16px'}} onClick={handleVote}>vote</button>
       <button onClick={handleNextAnecdote}>next anecdote</button>
 
       <h1>Anecdote with most votes</h1>

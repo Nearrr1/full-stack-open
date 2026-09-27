@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const Button = ({ onClick, text }) => (
-  <button onClick={onClick}>{text}</button>
+  <button style={{marginRight: '16px'}} onClick={onClick}>{text}</button>
 )
 
 const StatisticLine = ({ text, value }) => (
