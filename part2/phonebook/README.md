@@ -1,6 +1,6 @@
-# Exercises 2.6 - 2.11: The Phonebook
+# Exercises 2.6 - 2.15: The Phonebook
 
-This application was bootstrapped with [Vite](https://vite.dev/) and React for [Full Stack Open - Part 2](https://fullstackopen.com/en/part2/getting_data_from_server#exercise-2-11).
+This application was bootstrapped with [Vite](https://vite.dev/) and React for [Full Stack Open - Part 2](https://fullstackopen.com/en/part2/altering_data_in_server#exercises-2-12-2-15).
 
 ## Exercises Completed
 
@@ -10,6 +10,10 @@ This application was bootstrapped with [Vite](https://vite.dev/) and React for [
 - **2.9\*: The Phonebook Step 4**: Added search/filtering functionality to filter displayed people case-insensitively.
 - **2.10: The Phonebook Step 5**: Refactored the application by extracting reusable components (`Filter`, `PersonForm`, `Persons`, and `Person`) while maintaining state in `App`.
 - **2.11: The Phonebook Step 6**: Configured `db.json` with initial data and fetched the persons array on component mount via `axios` within `useEffect`.
+- **2.12: The Phonebook Step 7**: Persisted new phonebook entries directly to the backend `json-server` via HTTP POST requests.
+- **2.13: The Phonebook Step 8**: Extracted backend communication logic into a separate service module (`src/services/persons.js`).
+- **2.14: The Phonebook Step 9**: Added functionality to delete entries from the backend server using HTTP DELETE requests, with user confirmation via `window.confirm`.
+- **2.15\*: The Phonebook Step 10**: Enabled updating existing contact numbers via HTTP PUT requests when a duplicate name is submitted, with confirmation dialog and error handling if already removed.
 
 ## Running Locally
 
