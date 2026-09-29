@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Filter from './components/Filter'
+import Notification from './components/Notification'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 import personService from './services/persons'
@@ -9,6 +10,7 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
+  const [notification, setNotification] = useState(null)
 
   useEffect(() => {
     personService
@@ -20,6 +22,13 @@ const App = () => {
         console.error('Failed to fetch initial data:', error)
       })
   }, [])
+
+  const notify = (message, type = 'success') => {
+    setNotification({ message, type })
+    setTimeout(() => {
+      setNotification(null)
+    }, 5000)
+  }
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
@@ -64,11 +73,13 @@ const App = () => {
             )
             setNewName('')
             setNewNumber('')
+            notify(`Updated ${returnedPerson.name}`)
           })
           .catch((error) => {
             console.error(error)
-            alert(
-              `Information of ${existingPerson.name} has already been removed from server`
+            notify(
+              `Information of ${existingPerson.name} has already been removed from server`,
+              'error'
             )
             setPersons(persons.filter((person) => person.id !== existingPerson.id))
           })
@@ -87,10 +98,14 @@ const App = () => {
         setPersons(persons.concat(returnedPerson))
         setNewName('')
         setNewNumber('')
+        notify(`Added ${returnedPerson.name}`)
       })
       .catch((error) => {
         console.error(error)
-        alert('Failed to add person')
+        notify(
+          error.response?.data?.error || `Failed to add ${personObject.name}`,
+          'error'
+        )
       })
   }
 
@@ -102,10 +117,14 @@ const App = () => {
         .remove(id)
         .then(() => {
           setPersons(persons.filter((person) => person.id !== id))
+          notify(`Deleted ${name}`)
         })
         .catch((error) => {
           console.error(error)
-          alert(`Information of ${name} has already been removed from server`)
+          notify(
+            `Information of ${name} has already been removed from server`,
+            'error'
+          )
           setPersons(persons.filter((person) => person.id !== id))
         })
     }
@@ -120,6 +139,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification notification={notification} />
       <Filter value={filter} onChange={handleFilterChange} />
       <h3>Add a new</h3>
       <PersonForm
