@@ -1,0 +1,5 @@
+### Fetch existing person
+GET http://localhost:3001/api/persons/1
+
+### Fetch non-existing person (should return 404)
+GET http://localhost:3001/api/persons/9999

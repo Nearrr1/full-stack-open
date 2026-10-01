@@ -1,0 +1,33 @@
+### Create person successfully
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Linus Torvalds",
+  "number": "012-3456789"
+}
+
+### Error: Missing name
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "number": "012-3456789"
+}
+
+### Error: Missing number
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Grace Hopper"
+}
+
+### Error: Duplicate name
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Arto Hellas",
+  "number": "050-999999"
+}

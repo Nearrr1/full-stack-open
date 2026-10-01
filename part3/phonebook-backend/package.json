@@ -1,0 +1,20 @@
+{
+  "name": "phonebook-backend",
+  "version": "0.0.1",
+  "description": "Phonebook backend for Full Stack Open Part 3",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "keywords": [
+    "fullstackopen",
+    "express",
+    "phonebook"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
