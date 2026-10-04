@@ -77,11 +77,15 @@ const App = () => {
           })
           .catch((error) => {
             console.error(error)
-            notify(
-              `Information of ${existingPerson.name} has already been removed from server`,
-              'error'
-            )
-            setPersons(persons.filter((person) => person.id !== existingPerson.id))
+            if (error.response && error.response.status === 400) {
+              notify(error.response.data.error, 'error')
+            } else {
+              notify(
+                `Information of ${existingPerson.name} has already been removed from server`,
+                'error'
+              )
+              setPersons(persons.filter((person) => person.id !== existingPerson.id))
+            }
           })
       }
       return
